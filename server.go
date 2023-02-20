@@ -1,18 +1,21 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
 	"log"
+	"net/http"
 )
 
-const PORT = ":8795"
+const (
+	PATH = "/time"
+	PORT = ":8795"
+)
 
 func main() {
-	http.HandleFunc("/time", TimeHandler)
+	http.HandleFunc(PATH, TimeHandler)
 	fmt.Printf("Starting server at port %s", PORT)
 	err := http.ListenAndServe(PORT, nil)
 	if err != nil {
-	  log.Fatal(err)
+		log.Fatal(err)
 	}
 }
